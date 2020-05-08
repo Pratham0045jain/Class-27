@@ -6,6 +6,9 @@ var engine, world;
 var box1, pig1;
 var backgroundImg,platform;
 
+var chain; 
+var log;
+
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
 }
@@ -30,20 +33,26 @@ function setup(){
 
     log3 =  new Log(810,180,300, PI/2);
 
+
     box5 = new Box(810,160,70,70);
     log4 = new Log(760,120,150, PI/7);
     log5 = new Log(870,120,150, -PI/7);
 
+    log6 = new Log(150,150,150,PI/2);
+
     bird = new Bird(100,100);
+
+    chain= new Chain(bird.body,log6.body);
+    console.log("straint" + chain.chain.bodyA.position);
 
 }
 
 function draw(){
     background(backgroundImg);
     Engine.update(engine);
-    console.log(box2.body.position.x);
-    console.log(box2.body.position.y);
-    console.log(box2.body.angle);
+    //console.log(box2.body.position.x);
+    //console.log(box2.body.position.y);
+    //console.log(box2.body.angle);
     box1.display();
     box2.display();
     ground.display();
@@ -59,6 +68,11 @@ function draw(){
     log4.display();
     log5.display();
 
+    log6.display();
+
     bird.display();
     platform.display();
+
+    chain.display();
+
 }
